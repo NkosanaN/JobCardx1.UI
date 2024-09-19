@@ -1,0 +1,84 @@
+﻿@model IEnumerable<TimeCard.Domain.JobCard>
+
+@{
+    ViewData["Title"] = "Job Card";
+    Layout = "_LayoutDashboard";
+}
+&nbsp;
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-light shadow-sm">Create New Job</a>
+</p>
+<table class="table w-100 table-striped" id="tbl">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobCardId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateWorked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoursWorked)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobCardId)
+                </td>
+                <td>
+                    @Html.Raw($"{item.Employee.FirstName} - {item.Employee.LastName} / {item.Employee.EmployeeId}")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateWorked)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoursWorked)
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Action
+                            </button>
+                            @* <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <li><a class="dropdown-item" href="#">Details</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">View Report</a></li>
+                        </ul>*@
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tbl").DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true
+            });
+        });
+    </script>
+}

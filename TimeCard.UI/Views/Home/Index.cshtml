@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_LayoutDashboard";
+
+    int TotalNoItem = 0;
+    int TotalNoTransfer = 0;
+    int TotalNoMostUsedItems = 0;
+    int TotalNoItemRepair = 0;
+
+}
+
+<div class="container-fluid px-4">
+    <h6 class="display-6">@ViewData["Title"]</h6>
+    <div class="row g-3 my-2 col-12">
+        <div class="col-md-4">
+            <div class="p-3 bg-white shadow-lg d-flex justify-content-around align-items-center rounded">
+                <div>
+                    <h3 class="fs-2">@TotalNoItem</h3>
+                    <p class="fs-5">Total Employees</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-user fs-1 primary-text border rounded-circle bg-danger bg-opacity-50 p-3"></i>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 bg-white shadow-lg d-flex justify-content-around align-items-center rounded">
+                <div>
+                    <h3 class="fs-2">@TotalNoTransfer</h3>
+                    <p class="fs-5">Total Jobs</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-truck-fast fs-1 primary-text border rounded-circle bg-warning bg-opacity-50 p-3"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 bg-white shadow-lg d-flex justify-content-around align-items-center rounded">
+                <div>
+                    <h3 class="fs-2">@TotalNoTransfer</h3>
+                    <p class="fs-5">Total Job Card</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-folder-open fs-1 primary-text border rounded-circle bg-info bg-opacity-50 p-3"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5 col-12">
+            <div class="col-12 ">
+                <div class="card">
+                    <div class="fs-4 mb-3  card-header text-center">Feeds</div>
+                    <div class="col card-body">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+}
+

@@ -1,0 +1,71 @@
+﻿@model TimeCard.Domain.Job
+
+@{
+    ViewData["Title"] = "Create Job";
+    Layout = "_LayoutDashboard";
+}
+&nbsp;
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    <div class="container bg-opacity-100 shadow-sm">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="JobId" class="control-label"></label>
+                <input asp-for="JobId" class="form-control" />
+                <span asp-validation-for="JobId" class="text-danger"></span>
+            </div> 
+            *@
+            <div class="row  mb-3">
+                <div class="form-group col-12">
+                    <select asp-for="JobType" class="js-example-basic-single js-states form-select"
+                            asp-items="@ViewBag.jobTypeList" tabindex="-1">
+                        <option disabled selected>-Select Job Type-</option>
+                    </select>
+                    <span asp-validation-for="JobType" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientName" class="control-label"></label>
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientPhone" class="control-label"></label>
+                <input type="number" asp-for="ClientPhone" class="form-control" />
+                <span asp-validation-for="ClientPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientContactName" class="control-label"></label>
+                <input asp-for="ClientContactName" class="form-control" />
+                <span asp-validation-for="ClientContactName" class="text-danger"></span>
+            </div>
+            &nbsp;
+            <div class="form-group pb-3">
+                <input type="submit" value="Create" class="btn btn-light shadow-sm" />
+                <a asp-action="Index" class="btn btn-outline-secondary shadow-sm">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.js-example-basic-single ').select2();
+        })
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

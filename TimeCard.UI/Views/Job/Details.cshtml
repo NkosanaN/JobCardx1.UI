@@ -1,0 +1,66 @@
+﻿@model List<TimeCard.Domain.Job>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_LayoutDashboard";
+}
+&nbsp;
+<h1>@ViewData["Title"] </h1>
+
+<hr />
+
+<div>
+    <table class="table rounded table-bordered shadow-lg">
+        <thead class="alert-heading" style="background-color: #676e79;color: #fff">
+            <tr>
+                <th>Client Name</th>
+                <th>Client Phone</th>
+                <th>Client Contact Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model[0].ClientName  </td>
+                <td>@Model[0].ClientPhone </td>
+                <td>@Model[0].ClientContactName </td>
+            </tr>
+        </tbody>
+    </table>
+    <h4 class="text-center">Job Card Link To @Model.FirstOrDefault()!.JobType - (@Model.FirstOrDefault()!.JobId)</h4>
+
+    @if (Model[0].JobCards.Count is 0)
+    {
+     <p class="alert-info text-center h-25">No Job Card</p>
+        
+    }
+    else
+    {
+        <table class="table table-bordered shadow-lg">
+            <thead class="alert-heading" style="background-color: #676e79;color: #fff">
+                <tr>
+                    <th>EmployeeId</th>
+                    <th>Hours Worked</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model[0].JobCards)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HoursWorked)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+
+   
+    <div>
+
+        <a asp-action="Index" class="btn btn-outline-secondary shadow-sm">Back to List</a>
+    </div>
